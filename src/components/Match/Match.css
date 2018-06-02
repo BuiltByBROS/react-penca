@@ -1,0 +1,48 @@
+.container {
+    flex: 1;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    margin: 5px;
+}
+
+.expectation {
+    width: 100%;
+    display: flex;
+    flex: 1;
+    flex-direction: row;
+}
+
+.team {
+    display: flex;
+    flex: 1;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.emojiString {
+    font-size: 40px;
+}
+
+.inputContainer {
+    display: flex;
+    flex-direction: row;
+}
+
+.inputEnabled {
+    height: 50px;
+    width: 50px;
+    border: 1px solid #eee;
+    align-items: center;
+    text-align: center;
+}
+
+.inputEnabled input {
+    text-align: center;
+}
+
+.inputDisabled {
+    background-color: #eee;
+}

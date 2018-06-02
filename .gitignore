@@ -1,0 +1,25 @@
+# Dependency directories
+/node_modules/
+
+# build folders
+/dist/
+/build/
+/build_mobile/
+
+# webstorm/visual studio settings
+.idea/
+
+# Logs
+logs
+*.log
+npm-debug.log*
+
+# Optional npm cache directory
+.npm
+
+# Babel cache directory
+babel_cache
+
+# webpack profiler output
+/webpack.stats.json
+/temp/
