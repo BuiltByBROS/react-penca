@@ -17,14 +17,16 @@ before_script:
 docker_image:
   stage: build
   script:
+    - apk add --no-cache py-pip
+    - pip install docker-compose
     - docker login -u gitlab-ci-token -p $CI_JOB_TOKEN $CI_REGISTRY
-    - docker build -t $CI_REGISTRY_IMAGE:$CI_COMMIT_REF_NAME .
-    - docker push $CI_REGISTRY_IMAGE:$CI_COMMIT_REF_NAME
+    - docker-compose -f docker-compose-prod.yml up -d --build
+    - docker-compose push
 
 deploy_release:
   stage: deploy
   only:
    - master
   script:
-   - rancher-compose up -d --pull --force-upgrade react-penca
-   - rancher-compose up -d --upgrade --confirm-upgrade web react-penca
+   - rancher-compose up -d --pull --force-upgrade react-penca-prod
+   - rancher-compose up -d --upgrade --confirm-upgrade web react-penca-prod
