@@ -1,0 +1,30 @@
+stages:
+  - build
+  - deploy
+
+image: docker:latest
+
+services:
+  - docker:dind
+
+
+before_script:
+  - apk --no-cache add curl
+  - curl -L -O https://github.com/rancher/rancher-compose/releases/download/v0.12.5/rancher-compose-linux-amd64-v0.12.5.tar.gz
+  - tar -zxf rancher-compose-linux-amd64-v0.12.5.tar.gz
+  - mv rancher-compose-v0.12.5/rancher-compose /usr/bin/
+
+docker_image:
+  stage: build
+  script:
+    - docker login -u gitlab-ci-token -p $CI_JOB_TOKEN $CI_REGISTRY
+    - docker build -t $CI_REGISTRY_IMAGE:$CI_COMMIT_REF_NAME .
+    - docker push $CI_REGISTRY_IMAGE:$CI_COMMIT_REF_NAME
+
+deploy_release:
+  stage: deploy
+  only:
+   - master
+  script:
+   - rancher-compose up -d --pull --force-upgrade react-penca
+   - rancher-compose up -d --upgrade --confirm-upgrade web react-penca
