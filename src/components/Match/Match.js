@@ -49,17 +49,11 @@ class Match extends Component {
 								disableUnderline: true,
 								className: classes.inputEnabled
 							}}
-							value={
-								expectations[group].matches[match].home_expected_result || ""
-							}
+							value={expectations[group].matches[match].home_expected_result || ""}
 							onChange={this.handleExpectationUpdate("home_expected_result")}
 							type="number"
-							InputLabelProps={{
-								shrink: true,
-							}}
-							margin="normal"
+							margin="none"
 						/>
-
 						<TextField
 							id="number"
 							disabled={disabled}
@@ -70,7 +64,7 @@ class Match extends Component {
 							value={expectations[group].matches[match].away_expected_result || ""}
 							onChange={this.handleExpectationUpdate("away_expected_result")}
 							type="number"
-							margin="normal"
+							margin="none"
 						/>
 					</div>
 					<div className={classes.team}>
