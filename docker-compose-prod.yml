@@ -1,4 +1,0 @@
-react-penca-prod:
-  labels:
-    io.rancher.container.pull_image: always
-  image: registry.gitlab.com/stabarez/react-penca:master

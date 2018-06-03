@@ -26,5 +26,5 @@ deploy_release:
   only:
    - master
   script:
-   - rancher-compose -f docker-compose-prod.yml up -d --pull --force-upgrade react-penca-prod
+   - rancher-compose up -d --pull --force-upgrade react-penca-prod
    - rancher-compose up -d --upgrade --confirm-upgrade web react-penca-prod

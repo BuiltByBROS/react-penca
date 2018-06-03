@@ -1,18 +1,4 @@
-version: '3.5'
-
-services:
-
-  react-penca:
-    container_name: react-penca
-    build:
-      context: .
-      dockerfile: Dockerfile
-    volumes:
-      - '.:/usr/src/app'
-      - '/usr/src/app/node_modules'
-    ports:
-      - '3000:3000'
-    environment:
-      - NODE_ENV=development
-      - CHOKIDAR_USEPOLLING=true
-
+react-penca-prod:
+  labels:
+    io.rancher.container.pull_image: always
+  image: registry.gitlab.com/stabarez/react-penca:master
