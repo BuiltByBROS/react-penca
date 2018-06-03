@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 import Button from '@material-ui/core/Button';
 
 import Match from "../../components/Match/Match";
-import Spinner from '../../components/UI/Spinner/Spinner';
+import CircularProgress from '@material-ui/core/CircularProgress';
 
 import classes from './Dashboard.css';
 
@@ -23,9 +23,6 @@ class Dashboard extends Component {
 	};
 
 	submitExpectationsHandler = () => {
-		alert("Submitting expectations" +
-			this.props.userId
-		);
 		this.props.onSubmitExpectations(
 			this.props.token,
 			this.props.userId,
@@ -33,12 +30,27 @@ class Dashboard extends Component {
 	};
 
 	render() {
-		let content = <Spinner />;
+		let content = <CircularProgress
+			size={100}
+			style={{color: "black"}}
+		/>;
+
 		let submitResultButton = null;
 
 		if (!this.props.ui.isLoading
 				&& this.props.fixture
 				&& this.props.expectations) {
+
+			submitResultButton = (
+				<Button
+					style={{
+						margin: 50,
+					}}
+					color="primary"
+					onClick={this.submitExpectationsHandler}
+				>Submit Expectations
+				</Button>
+			);
 
 			content = [];
 			Object.keys(this.props.fixture).forEach((groupIndex) => {
@@ -62,27 +74,16 @@ class Dashboard extends Component {
 					>
 						<span className={classes.groupName}>{this.props.fixture[groupIndex].name}</span>
 						{matches}
+						{submitResultButton}
 					</div>
 				)
 
 			});
-
-			submitResultButton = (
-				<Button
-					style={{
-						margin: 50,
-					}}
-					color="primary"
-					onClick={this.submitExpectationsHandler}
-				>Submit Expectations
-				</Button>
-			)
 		}
 
 		return (
 			<div className={classes.container}>
 				{content}
-				{submitResultButton}
 			</div>
 		);
 	}

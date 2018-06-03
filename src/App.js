@@ -8,7 +8,7 @@ import Dashboard from './containers/Dashboard/Dashboard';
 import Logout from './containers/Auth/Logout/Logout';
 import * as actions from './store/actions/index';
 
-import background from './assets/images/background.jpg';
+import background from './assets/images/background.png';
 
 const asyncAuth = asyncComponent(() => {
   return import('./containers/Auth/Auth');
@@ -39,11 +39,9 @@ class App extends Component {
     }
 
     return (
-    <div>
-        <Layout>
-          {routes}
-        </Layout>
-      </div>
+      <Layout>
+        {routes}
+      </Layout>
     );
   }
 }
