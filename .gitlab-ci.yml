@@ -27,4 +27,4 @@ deploy_release:
    - master
   script:
    - rancher-compose up -d --pull --force-upgrade react-penca-prod
-   - rancher-compose up -d --upgrade --confirm-upgrade web react-penca-prod
+   - rancher-compose up -d --upgrade --confirm-upgrade react-penca-prod
