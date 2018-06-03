@@ -8,14 +8,13 @@ class Match extends Component {
 
 	handleExpectationUpdate = team => event => {
 
-		let newValue = event.target.value && parseInt(event.target.value) >= 0 ?
-			parseInt(event.target.value) :
-			null;
-
 		this.props.onUpdateExpectation(
 			this.props.group,
 			this.props.match,
-			{ [team]: newValue }
+			{
+				[team]: parseInt(event.target.value) >= 0 ?
+					parseInt(event.target.value) : null
+			}
 		)
 	};
 
@@ -40,17 +39,16 @@ class Match extends Component {
 				<div className={classes.expectation}>
 					<div className={classes.team}>
 						<span className={classes.emojiString}>{home_team.emojiString}</span>
-						<span>{home_team.fifaCode}</span>
+						<span className={classes.fifaCode}>{home_team.fifaCode}</span>
 					</div>
 					<div className={classes.inputContainer}>
 						<TextField
+							id="number"
 							disabled={disabled}
-							inputStyle={{ textAlign: 'center' }}
 							InputProps={{
 								disableUnderline: true,
 								className: classes.inputEnabled
 							}}
-							id="number"
 							value={
 								expectations[group].matches[match].home_expected_result || ""
 							}
@@ -63,25 +61,20 @@ class Match extends Component {
 						/>
 
 						<TextField
+							id="number"
 							disabled={disabled}
 							InputProps={{
 								disableUnderline: true,
 								className: classes.inputEnabled
 							}}
-							id="number"
-							value={
-								expectations[group].matches[match].away_expected_result || ""
-							}
+							value={expectations[group].matches[match].away_expected_result || ""}
 							onChange={this.handleExpectationUpdate("away_expected_result")}
 							type="number"
-							InputLabelProps={{
-								shrink: true,
-							}}
 							margin="normal"
 						/>
 					</div>
 					<div className={classes.team}>
-						<span>{away_team.fifaCode}</span>
+						<span className={classes.fifaCode}>{away_team.fifaCode}</span>
 						<span className={classes.emojiString}>{away_team.emojiString}</span>
 					</div>
 				</div>

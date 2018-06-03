@@ -58,7 +58,8 @@ class Dashboard extends Component {
 				content.push(
 					<div
 						key={groupIndex}
-						className={classes.groupContainer}>
+						className={classes.groupContainer}
+					>
 						<span className={classes.groupName}>{this.props.fixture[groupIndex].name}</span>
 						{matches}
 					</div>
