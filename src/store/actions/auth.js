@@ -2,7 +2,7 @@ import axios from 'axios';
 
 import * as actionTypes from './actionTypes';
 
-const API_KEY = "AIzaSyDb3QBqFJ9laRl_mAD-O4WarTWPC6AGEf4";
+const API_KEY = "AIzaSyB3Edn5hxi5Y63I_fhjdm5NYegdWP4RLzs";
 
 export const authStart = () => {
     return {

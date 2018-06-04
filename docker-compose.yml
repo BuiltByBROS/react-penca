@@ -1,4 +1,11 @@
-react-penca-prod:
-  labels:
-    io.rancher.container.pull_image: always
-  image: registry.gitlab.com/stabarez/react-penca:master
+version: '3.5'
+
+services:
+
+  react-penca-prod:
+    container_name: react-penca-prod
+    build:
+      context: .
+      dockerfile: Dockerfile-prod
+    ports:
+      - '3000:80'

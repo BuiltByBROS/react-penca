@@ -1,4 +1,0 @@
-react-penca-prod:
-  scale: 1
-  upgrade_strategy:
-    start_first: true

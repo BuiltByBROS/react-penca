@@ -12,7 +12,11 @@ import fixtureReducer from "./store/reducers/fixture";
 import uiReducer from "./store/reducers/ui";
 import authReducer from './store/reducers/auth';
 
-const composeEnhancers = process.env.NODE_ENV === 'development' ? window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ : null || compose;
+let composeEnhancers = compose;
+
+if (process.env.NODE_ENV === 'development') {
+	composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose
+}
 
 const rootReducer = combineReducers({
     auth: authReducer,
