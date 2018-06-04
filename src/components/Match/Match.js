@@ -49,7 +49,10 @@ class Match extends Component {
 								disableUnderline: true,
 								className: classes.inputEnabled
 							}}
-							value={expectations[group].matches[match].home_expected_result || ""}
+							value={
+								expectations[group].matches[match].home_expected_result !== null ?
+								expectations[group].matches[match].home_expected_result: ""
+							}
 							onChange={this.handleExpectationUpdate("home_expected_result")}
 							type="number"
 							margin="none"
@@ -61,7 +64,10 @@ class Match extends Component {
 								disableUnderline: true,
 								className: classes.inputEnabled
 							}}
-							value={expectations[group].matches[match].away_expected_result || ""}
+							value={
+								expectations[group].matches[match].away_expected_result !== null ?
+								expectations[group].matches[match].away_expected_result	: ""
+							}
 							onChange={this.handleExpectationUpdate("away_expected_result")}
 							type="number"
 							margin="none"
